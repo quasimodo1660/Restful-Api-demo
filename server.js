@@ -1,11 +1,14 @@
 var express = require('express');
 var app = express();
+let path = require('path'); 
 
 
 var bodyParser=require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/myFirstAngularApp/dist' ));
 
+ 
 require('./server/config/mongoose.js');
 
 var routes_setter = require('./server/config/routes.js');

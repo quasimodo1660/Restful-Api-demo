@@ -15,4 +15,8 @@ module.exports = function(app){
     app.delete('/tasks/:id',(req,res)=>{
         task.remove(req,res)
     })
+    app.get('/',(req,res)=>{
+        console.log('here');
+        res.send('Welcome to MEAN')
+    })
 }
