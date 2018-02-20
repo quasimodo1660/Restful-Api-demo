@@ -16,13 +16,13 @@ module.exports={
     })
     },
     show:(req,res)=>{
-        Task.find({},(err,results)=>{
+        Task.find({}).sort({createdAt:'desc'}).exec((err,results)=>{
             if(err){
                 console.log(err);
                 res.json({message:'Error',error:err});
             }     
             else{
-                res.json({message:'Success',data:results});
+                res.json({message:'Success',tasks:results});
             }          
         })
     },
@@ -33,7 +33,7 @@ module.exports={
                 res.json({message:'Error',error:err});
             }     
             else{
-                res.json({message:'Success',data:results});
+                res.json({message:'Success',task:results});
             }        
         })
     },

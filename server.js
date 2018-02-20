@@ -6,7 +6,8 @@ let path = require('path');
 var bodyParser=require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/myFirstAngularApp/dist' ));
+// app.use(express.static(path.join('../Angular/dist' )));
+app.use(express.static(path.join('./client/dist' )));
 
  
 require('./server/config/mongoose.js');

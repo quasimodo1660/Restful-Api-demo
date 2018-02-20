@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center" class='jumbotron'>
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+<div class='container'>
+<div id='main' class='row'>
+    <ul class='list-group'><h3>Uncomplete</h3>
+      <ng-container *ngFor='let task of tasks'>
+      <li *ngIf='!task.completed' class='list-group-item'>{{task.title}} - {{task.description}} 
+        <button class='btn btn-danger pull-right' (click)='deleteTask(task._id)'>Delete</button>
+        <button class='btn btn-primary pull-right' (click)='getTaskButtonClick(task)'>Edit</button>
+        <button class='btn btn-primary pull-right' (click)='taskComplete(task)'>Done</button>
+      </li>
+    </ng-container>
+    </ul>
+  
+</div>
+<div id='main' class='row'>
+    <ul class='list-group' ><h3>Complete</h3>
+      <ng-container *ngFor='let task of tasks'>
+      <li *ngIf='task.completed' class='list-group-item'>{{task.title}} - {{task.description}} 
+        <button class='btn btn-primary pull-right' (click)='taskComplete(task)'>Undone</button>
+      </li>
+      </ng-container>
+    </ul>
+</div>
+
+<div class='row'>
+  <form (submit)="onSubmit()">
+      <div class="form-group">
+          <label for="exampleInputEmail1">Title:</label>
+          <input type="text" class="form-control" name='newTask.title' [(ngModel)]='newTask.title'>
+      </div>
+      <div class="form-group">
+          <label for="exampleInputPassword1">Description:</label>
+          <textarea class="form-control" name='newTask.description' [(ngModel)]='newTask.description'></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button> 
+  </form>
+</div>
+</div>
+
+
